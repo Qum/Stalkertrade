@@ -10,7 +10,7 @@
 <title>CRUD Basic</title>
 </head>
 <body>
-	<div id="wrapper">
+<div id="wrapper">
 <%@ include file="navi.jsp"%>
 <div id="content">
 	<div id="goods">
@@ -34,10 +34,12 @@
 		</div>
 		<div class="product last">
 			<a href="#"><img alt="" src="img/armor-icon.png"> </a>
-				<c:forEach items="${products}" var="product">
+							<c:forEach items="${products}" var="product">
     <p>${product}</p><br>
      </c:forEach>
+
 		</div>
+	</div>
 	</div>
 
 </div>

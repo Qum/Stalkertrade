@@ -14,7 +14,7 @@ import qum.model.Product;
 /**
  * Servlet implementation class ProductManage
  */
-@WebServlet("/ProductManage")
+@WebServlet("/productcreate.do")
 public class ProductManage extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -40,13 +40,17 @@ public class ProductManage extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
 	String pName = request.getParameter("pname");
+	Integer pCost = Integer.parseInt(request.getParameter("pCost"));
+	String pDesc = request.getParameter("pname");
+	if (pName != null && pCost != null && pDesc != null){
 	ProductDao PDAO = new ProductDao();
 	Product prod = new Product();
 	prod.setProd_name(pName);
-	prod.setCost(500);
-	prod.setDesc("test drscr");
+	prod.setCost(pCost);
+	prod.setDesc(pDesc);
 	PDAO.addProduct(prod);
 	request.setAttribute("mess", "Продукт " + pName + " - добавлен");
-	request.getRequestDispatcher("debugView.jsp").forward(request, response);
+	request.getRequestDispatcher("productcreate.jsp").forward(request, response);
+	}
     }
 }

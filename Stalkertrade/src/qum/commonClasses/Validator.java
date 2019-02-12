@@ -15,7 +15,7 @@ public class Validator {
 	    public Validator() {
 		dao = new UserDAO();
 	    }
-	    
+	     
 	    public List validate(User user){
 		List<String> errors = new LinkedList<>();
 		validateName(user.getName(),errors);

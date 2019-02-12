@@ -22,14 +22,12 @@
 	<div id="wrapper">
 <%@ include file="navi.jsp"%>
 		<div id="content">
-			
-	<c:forEach var="category" items="${categories}">
-	
-	</c:forEach>
 		<div id="createForm">
-            <form action="ProductManage" method="post" >
+            <form action="productcreate.do" method="post" >
             <input type="text" name="pname">
-                <input type="submit" value="Add Product" >
+            <input type="text" name="pcost">
+            <input type="text" name="pdesc">
+            <input type="submit" value="Add Product" >
             </form>
 		</div>
 		</div>
