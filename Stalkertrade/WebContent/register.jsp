@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix = "ex" uri = "WEB-INF/custom.tld"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -14,9 +15,10 @@
 	<div id="wrapper">
 <%@ include file="navi.jsp"%>
 		<div id="content">
-		<div id="forma1">sdfsdfdfs</div>
 			<div id="forma">
-				<form onsubmit="return regDataCheck(regForma)" action="addingUser" method="post" name="regForma">
+				 <h1 style="color:aqua;">Регистрация</h1>
+				  <ex:Hello/>
+				<form onsubmit="return regDataCheck(regForma)" action="registrator" method="post" name="regForma">
 						<a>Введите ник</a>
 						<input type="text" name="uname">
 						 <br>
@@ -29,7 +31,7 @@
 						 <br>
 						<input type="submit" value="Create">
 				</form> 
-						<c:forEach items="${errMessage}" var="err">
+						<c:forEach items="${errors}" var="err">
           			    <p>${err}</p><br>
           			    </c:forEach>
 			</div>

@@ -14,9 +14,8 @@ import qum.commonClasses.Hasher;
 import qum.commonClasses.Validator;
 import qum.model.User;
 
-@WebServlet("/addingUser" )
+@WebServlet("/registrator")
 public class RegisterController extends HttpServlet {
-
     private static final long serialVersionUID = 1L;
 
     public RegisterController() {
@@ -30,18 +29,18 @@ public class RegisterController extends HttpServlet {
 	NewUser.setPassword(request.getParameter("upass"));
 	NewUser.setEmail(request.getParameter("umail"));
 
-	List userValidate = new Validator().validate(NewUser);
-	
+	List<String> userValidate = new Validator().validate(NewUser);
+
 	if (userValidate.size() == 0) {
 	    NewUser.setPassword(Hasher.cryptPassword(NewUser.getPassword()));
 	    UserDAO DAO = new UserDAO();
 	    DAO.addUser(NewUser);
 	    request.setAttribute("userName", NewUser.getName());
-	    request.getRequestDispatcher("/index.jsp").forward(request, response);
+	    request.getRequestDispatcher("/home.jsp").forward(request, response);
 	} else {
-	    request.setAttribute("errMessage", userValidate);
+	    request.setAttribute("errors", userValidate);
 	    request.getRequestDispatcher("/register.jsp").forward(request, response);
-	    
+
 	}
     }
 

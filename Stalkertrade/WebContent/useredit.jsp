@@ -19,11 +19,11 @@
 			<table border="1">
 				<tr>
 					<th><%=name1%></th>
-					<th><form action="ueditor">
+					<th><form action="manage.do">
 							<input type="hidden" name="edit" value="<%=name1%>">
 							 <input type="submit" value="EDIT">
 						</form></th>
-					<th><form action="ueditor">
+					<th><form action="manage.do">
 							<input type="hidden" name="delete" value="<%=name1%>"> 
 							<input type="submit" value=DELETE>
 						</form></th>
@@ -31,11 +31,11 @@
 				
 				<tr>
 					<td><%=name2%></td>
-					<td><form action="ueditor">
+					<td><form action="manage.do">
 							<input type="hidden" name="edit" value="<%=name2%>">
 							 <input type="submit" value="EDIT">
 						</form></td>
-					<td><form action="ueditor">
+					<td><form action="manage.do">
 							<input type="hidden" name="delete" value="<%=name2%>"> 
 							<input type="submit" value=DELETE>
 						</form></td>

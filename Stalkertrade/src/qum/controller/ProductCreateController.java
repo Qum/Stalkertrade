@@ -15,13 +15,13 @@ import qum.model.Product;
  * Servlet implementation class ProductManage
  */
 @WebServlet("/productcreate.do")
-public class ProductManage extends HttpServlet {
+public class ProductCreateController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     /** 
      * @see HttpServlet#HttpServlet()
      */
-    public ProductManage() {
+    public ProductCreateController() {
 	super();
     }
 

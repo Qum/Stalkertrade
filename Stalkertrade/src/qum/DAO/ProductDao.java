@@ -15,9 +15,9 @@ import qum.model.Product;
 public class ProductDao {
 
     private static final String  getProductByIdSql  = "select * from products where prod_id = ?";
-    private static final String  addProductSql   = "insert into products(prod_name, cost, descr) values(?, ?, ?)";
+    private static final String  addProductSql   = "insert into products(prod_name, cost, descr, type) values(?, ?, ?, ?)";
     private static final String  deleteProductSql   = "delete from products where prod_id = ?";
-    private static final String  updateProductSql   = "update products set prod_name = ?, cost = ?, descr = ?";
+    private static final String  updateProductSql   = "update products set prod_name = ?, cost = ?, descr = ?, type = ?";
     private static final String  getAllProductsSql   = "SELECT * FROM products";
 
     public int addProduct(Product prod) { 
@@ -27,6 +27,7 @@ public class ProductDao {
 	    preparedStatement.setString(1, prod.getProd_name());
 	    preparedStatement.setInt(2, prod.getCost());
 	    preparedStatement.setString(3, prod.getDesc());
+	    preparedStatement.setString(4, prod.getType());
 	    id =  preparedStatement.executeUpdate();
 	} catch (Exception e) {
 	    e.printStackTrace();
@@ -48,6 +49,7 @@ public class ProductDao {
         	prod.setProd_name(resultSet.getString("prod_name"));
         	prod.setCost(resultSet.getInt("cost"));
         	prod.setDesc(resultSet.getString("descr"));
+        	prod.setType(resultSet.getString("type"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -80,6 +82,7 @@ public class ProductDao {
     	    preparedStatement.setString(1, prod.getProd_name());
     	    preparedStatement.setInt(2, prod.getCost());
     	    preparedStatement.setString(3, prod.getDesc());
+    	    preparedStatement.setString(4, prod.getType());
 
             preparedStatement.executeUpdate();
         } catch (Exception e) {
@@ -101,6 +104,7 @@ public class ProductDao {
 	        	prod.setProd_name(resultSet.getString("prod_name"));
 	        	prod.setCost(resultSet.getInt("cost"));
 	        	prod.setDesc(resultSet.getString("descr"));
+	        	prod.setType(resultSet.getString("type"));
 
 	        	allProd.add(prod);
 		}

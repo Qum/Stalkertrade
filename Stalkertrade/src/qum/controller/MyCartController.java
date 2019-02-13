@@ -20,13 +20,13 @@ import qum.model.Product;
 /**
  * Servlet implementation class cartItems
  */
-@WebServlet("/cartItems")
-public class cartItems extends HttpServlet {
+@WebServlet("/mycart")
+public class MyCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public cartItems() {
+    public MyCartController() {
         super();
     }
 	/**

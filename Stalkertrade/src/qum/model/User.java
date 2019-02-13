@@ -7,6 +7,15 @@ public class User {
     private String password;
     private String email;
     private int acc_lvl;
+    private int coins;
+
+    public int getCoins() {
+        return coins;
+    }
+
+    public void setCoins(int coins) {
+        this.coins = coins;
+    }
 
     public int getId() {
 	return id;
