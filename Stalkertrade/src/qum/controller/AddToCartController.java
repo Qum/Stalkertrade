@@ -1,39 +1,53 @@
 package qum.controller;
 
 import java.io.IOException;
+import java.util.LinkedHashMap;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class AddToCartController
- */
-@WebServlet("/AddToCartController")
+import qum.DAO.ProductDao;
+import qum.model.Product;
+
+@WebServlet("/addprodtocart")
 public class AddToCartController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    private static final long serialVersionUID = 1L;
+
     public AddToCartController() {
-        super();
-        // TODO Auto-generated constructor stub
+	super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException {
+	Integer prodid = 0;
+	Product selectedProduct = null;
+	LinkedHashMap<Integer, Integer> cart = new LinkedHashMap<>();
+	ProductDao pDao = new ProductDao();
+	String prod = request.getParameter("prodid");
+	if (prod != null && prod != "") {
+	    try {
+		prodid = Integer.parseInt(prod);
+		selectedProduct = pDao.getProductById(prodid);
+	    } catch (RuntimeException ex) {
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+	    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	    if (request.getSession().getAttribute("cart") == null)
+		request.getSession().setAttribute("cart", cart);
 	}
-
+	cart = (LinkedHashMap<Integer, Integer>) request.getSession().getAttribute("cart");
+	if (cart.get(prodid) != null) {
+	    cart.put(prodid, (cart.get(prodid) + 1));
+	} else {
+	    cart.put(prodid, 1);
+	}
+	Cookie cookie = new Cookie("productsncart", "" + cart.size());
+	response.addCookie(cookie);
+	request.getRequestDispatcher("poroductcategory?type=weapons").forward(request, response);
+    }
 }

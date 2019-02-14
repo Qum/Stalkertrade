@@ -17,5 +17,6 @@
 				<li><a href="login.jsp">Войти</a></li>
 			 </c:otherwise>
 			 </c:choose>
+			<li><a href="mycart.jsp"> Корзина : (${cookie['productsncart']})</a></li>
 	</ul>
 </div>

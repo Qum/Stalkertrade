@@ -15,20 +15,24 @@ import qum.model.Product;
 /**
  * Servlet implementation class ProductAllController
  */
-@WebServlet("/weapons")
-public class ProductAllController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-	ProductDao pDao = new ProductDao();
-       
-    public ProductAllController() {
-        super();
+@WebServlet("/poroductcategory")
+public class ProductTypeController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    public ProductTypeController() {
+	super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    List<Product> allprod = pDao.getAllProducts();
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+	    throws ServletException, IOException {
+	ProductDao pDao = new ProductDao();
+	String requestedType = request.getParameter("type");
+	if (requestedType != null && requestedType != "") {
+	    List<Product> allprod = pDao.getProductByType("weapon");
 	    System.out.println(allprod);
 	    request.setAttribute("products", allprod);
 	    request.getRequestDispatcher("weapons.jsp").forward(request, response);
 	}
+    }
 
 }

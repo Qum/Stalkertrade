@@ -52,3 +52,19 @@ body {
 #header ul li a:HOVER {
 	color: darkorange;
 }
+.producttable {
+	
+	color: aqua;
+}
+
+table p {
+	color: aqua;
+}
+
+.descprod {
+	float: left;
+}
+
+.order {
+	color:green;
+}

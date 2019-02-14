@@ -17,7 +17,7 @@
 			<c:if test="${LoggetUser != null}" > 
 				<div class="product">
 					<img alt="" src="img/armor-icon.png"></a>
-					<a href="weapons">Вооружение</a>
+					<a href="poroductcategory?type=weapons">Вооружение</a>
 				</div>
 				</c:if>
 				<div class="product">
