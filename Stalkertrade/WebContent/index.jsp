@@ -7,7 +7,7 @@
 <head>
 <link href="css/style.css" type="text/css" rel="stylesheet">
 <link href="css/index.css" type="text/css" rel="stylesheet">
-<title>CRUD Basic</title>
+<title>CRUD Bassic</title>
 </head>
 <body>
 	<div id="wrapper">
