@@ -19,7 +19,7 @@ public class RegisterController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public RegisterController() {
-	super(); 
+	super();  
     } 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
