@@ -16,7 +16,7 @@
 		<div id="content">
 			<div id="menu">
                 <ul>
-                <li><a href="usermanage.do" >Управление пользователями</a></li>
+                <li><a href="useredit.jsp" >Управление пользователями</a></li>
                 <li><a href="productcreate.jsp" >Добавление продуктов</a></li>
                 <li><a href="nuser.jsp" >blank</a></li>
                 <li><a href="nuser.jsp" >blank</a></li>

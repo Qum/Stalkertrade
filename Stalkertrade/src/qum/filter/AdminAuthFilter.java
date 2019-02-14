@@ -10,6 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import qum.model.User;
 
@@ -29,7 +30,8 @@ public class AdminAuthFilter implements Filter {
 	if (User != null && User.getAcc_lvl() > 10) {
 	    chain.doFilter(servletRequest, servletResponse);
 	} else {
-	    request.getRequestDispatcher("/").forward(request, servletResponse);
+	   HttpServletResponse resp = (HttpServletResponse) servletResponse;
+	   resp.sendRedirect("index.jsp");
 	}
     }
 

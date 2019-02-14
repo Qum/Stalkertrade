@@ -10,8 +10,7 @@ import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
-
-import qum.model.User;
+import javax.servlet.http.HttpServletResponse;
 
 @WebFilter(urlPatterns = "*.do")
 public class AuthFilter implements Filter {
@@ -25,11 +24,11 @@ public class AuthFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
 	    FilterChain chain) throws IOException, ServletException {
 	HttpServletRequest request = (HttpServletRequest) servletRequest;
-	User User = (User) request.getSession().getAttribute("LoggetUser");
-	if (User != null) {
+	if (request.getSession().getAttribute("LoggetUser") != null) {
 	    chain.doFilter(servletRequest, servletResponse);
 	} else {
-	    request.getRequestDispatcher("/").forward(request, servletResponse);
+	    HttpServletResponse resp = (HttpServletResponse) servletResponse;
+	   resp.sendRedirect("index.jsp");
 	}
     }
 

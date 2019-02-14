@@ -15,6 +15,7 @@ import qum.model.Product;
 public class ProductDao {
 
     private static final String  getProductByIdSql  = "select * from products where prod_id = ?";
+    private static final String  getProductByTypeSql  = "select * from products where type = ?";
     private static final String  addProductSql   = "insert into products(prod_name, cost, descr, type) values(?, ?, ?, ?)";
     private static final String  deleteProductSql   = "delete from products where prod_id = ?";
     private static final String  updateProductSql   = "update products set prod_name = ?, cost = ?, descr = ?, type = ?";
@@ -65,6 +66,41 @@ public class ProductDao {
         return prod;
     }
     
+    public List<Product> getProductByType(String productType) {
+   	List<Product> allProd = new LinkedList<>();
+   	ResultSet resultSet = null;
+
+   	try (Connection conn = DbConnFactory.getConnection();PreparedStatement preparedStatement = conn.prepareStatement(
+   		getProductByTypeSql)) {
+   	    	preparedStatement.setString(1, productType);
+   		resultSet = preparedStatement.executeQuery();
+
+   		while (resultSet.next()) {
+   			Product prod = new Product();
+   			prod.setId(resultSet.getInt("prod_id"));
+   	        	prod.setProd_name(resultSet.getString("prod_name"));
+   	        	prod.setCost(resultSet.getInt("cost"));
+   	        	prod.setDesc(resultSet.getString("descr"));
+   	        	prod.setType(resultSet.getString("type"));
+
+   	        	allProd.add(prod);
+   		}
+
+   	} catch (Exception e) {
+               e.printStackTrace();
+           } finally {
+               if(resultSet != null){
+                   try {
+                       resultSet.close();
+                   } catch (SQLException e) {
+                       e.printStackTrace();
+                   }
+               }
+            }
+
+   	return allProd;
+       }
+    
     public void deleteUser(int id) {
         try (Connection connection = DbConnFactory.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(
         	deleteProductSql)) {
@@ -105,7 +141,7 @@ public class ProductDao {
 	        	prod.setCost(resultSet.getInt("cost"));
 	        	prod.setDesc(resultSet.getString("descr"));
 	        	prod.setType(resultSet.getString("type"));
-
+	        	System.out.println(prod);
 	        	allProd.add(prod);
 		}
 

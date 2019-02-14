@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class ueditor
  */
-@WebServlet("/ueditor")
+@WebServlet("/manage.do")
 public class UserEditorController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 

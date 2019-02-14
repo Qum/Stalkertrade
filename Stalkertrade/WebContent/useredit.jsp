@@ -23,7 +23,7 @@
 							<input type="hidden" name="edit" value="<%=name1%>">
 							 <input type="submit" value="EDIT">
 						</form></th>
-					<th><form action="manage.do">
+					<th><form action="/manage.do">
 							<input type="hidden" name="delete" value="<%=name1%>"> 
 							<input type="submit" value=DELETE>
 						</form></th>

@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class DeleteUserController
+ * Servlet implementation class AddToCartController
  */
-@WebServlet("/us1nage.do")
-public class DeleteUserController extends HttpServlet {
+@WebServlet("/AddToCartController")
+public class AddToCartController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public DeleteUserController() {
+    public AddToCartController() {
         super();
         // TODO Auto-generated constructor stub
     }

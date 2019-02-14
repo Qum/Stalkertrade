@@ -40,7 +40,7 @@ public class LoginUserController extends HttpServlet {
 	    if (userExist && passwordMatch) {
 		// if user exists and pass valid
 		request.getSession().setAttribute("LoggetUser", preAuthUser);
-		request.getRequestDispatcher("/home.jsp").forward(request, response);
+		request.getRequestDispatcher("/index.jsp").forward(request, response);
 	    } else {
 		validateErrors.add("Неверные данные пользователя");
 		request.setAttribute("errors", validateErrors);

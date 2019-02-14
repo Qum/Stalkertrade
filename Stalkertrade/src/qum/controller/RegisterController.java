@@ -35,8 +35,8 @@ public class RegisterController extends HttpServlet {
 	    NewUser.setPassword(Hasher.cryptPassword(NewUser.getPassword()));
 	    UserDAO DAO = new UserDAO();
 	    DAO.addUser(NewUser);
-	    request.setAttribute("userName", NewUser.getName());
-	    request.getRequestDispatcher("/home.jsp").forward(request, response);
+	    request.getSession().setAttribute("LoggetUser", NewUser);
+	    response.sendRedirect("index.jsp");
 	} else {
 	    request.setAttribute("errors", userValidate);
 	    request.getRequestDispatcher("/register.jsp").forward(request, response);
