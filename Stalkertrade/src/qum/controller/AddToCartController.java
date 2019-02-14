@@ -35,7 +35,7 @@ public class AddToCartController extends HttpServlet {
 		selectedProduct = pDao.getProductById(prodid);
 	    } catch (RuntimeException ex) {
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-	    }
+	    } 
 
 	    if (request.getSession().getAttribute("cart") == null)
 		request.getSession().setAttribute("cart", cart);
