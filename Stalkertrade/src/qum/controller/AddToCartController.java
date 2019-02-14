@@ -30,7 +30,7 @@ public class AddToCartController extends HttpServlet {
 	ProductDao pDao = new ProductDao();
 	String prod = request.getParameter("prodid");
 	if (prod != null && prod != "") {
-	    try {
+	    try { 
 		prodid = Integer.parseInt(prod);
 		selectedProduct = pDao.getProductById(prodid);
 	    } catch (RuntimeException ex) {
