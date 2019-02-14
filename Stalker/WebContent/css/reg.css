@@ -1,0 +1,9 @@
+#forma {
+	margin-top:100px;
+	width : 600px;
+	text-align: right;
+}
+
+#forma p {
+    color: darkorange;
+}
