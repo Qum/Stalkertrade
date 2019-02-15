@@ -14,15 +14,13 @@
 		<%@ include file="navi.jsp"%>
 		<div id="content">
 			<div id="goods">
-			<c:if test="${LoggetUser != null}" > 
 				<div class="product">
 					<img alt="" src="img/armor-icon.png"></a>
 					<a href="poroductcategory?type=weapons">Вооружение</a>
 				</div>
-				</c:if>
 				<div class="product">
 					<img alt="" src="img/armor-icon.png"></a>
-					<a href="/armor">Экипировка <c:out value="${LoggetUser.getName()}"/>	</a>
+					<a href="/armor">Экипировка </a>
 					<br>
 									
 

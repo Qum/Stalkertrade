@@ -19,8 +19,8 @@ public class AddToCartController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
     public AddToCartController() {
-	super(); 
-    } 
+	super();
+    }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
@@ -30,7 +30,7 @@ public class AddToCartController extends HttpServlet {
 	ProductDao pDao = new ProductDao();
 	String prod = request.getParameter("prodid");
 	if (prod != null && prod != "") {
-	    try { 
+	    try {
 		prodid = Integer.parseInt(prod);
 		selectedProduct = pDao.getProductById(prodid);
 	    } catch (RuntimeException ex) {
@@ -46,8 +46,6 @@ public class AddToCartController extends HttpServlet {
 	} else {
 	    cart.put(prodid, 1);
 	}
-	Cookie cookie = new Cookie("productsncart", "" + cart.size());
-	response.addCookie(cookie);
 	request.getRequestDispatcher("poroductcategory?type=weapons").forward(request, response);
     }
 }

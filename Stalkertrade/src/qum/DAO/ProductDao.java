@@ -46,6 +46,7 @@ public class ProductDao {
  
             resultSet = preparedStatement.executeQuery();
             if(resultSet.next()){
+        	prod = new Product();
         	prod.setId(resultSet.getInt("prod_id"));
         	prod.setProd_name(resultSet.getString("prod_name"));
         	prod.setCost(resultSet.getInt("cost"));

@@ -31,7 +31,7 @@ public class ProductTypeController extends HttpServlet {
 	    List<Product> allprod = pDao.getProductByType("weapon");
 	    System.out.println(allprod);
 	    request.setAttribute("products", allprod);
-	    request.getRequestDispatcher("weapons.jsp").forward(request, response);
+	    request.getRequestDispatcher("products.jsp").forward(request, response);
 	}
     }
 
