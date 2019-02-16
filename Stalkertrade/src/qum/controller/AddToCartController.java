@@ -46,8 +46,7 @@ public class AddToCartController extends HttpServlet {
 	} else {
 	    cart.put(prodid, 1);
 	}
-	Cookie cookie = new Cookie("productsncart", "" + cart.size());
-	response.addCookie(cookie);
-	request.getRequestDispatcher("poroductcategory?type=weapons").forward(request, response);
+	request.getRequestDispatcher("poroductcategory?type=" + selectedProduct.getType()).forward(
+		request, response);
     }
 }

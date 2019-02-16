@@ -1,6 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page isELIgnored="false"%>
 <!DOCTYPE html>
 <html>
@@ -14,19 +13,20 @@
 		<%@ include file="navi.jsp"%>
 		<div id="content">
 			<div id="goods">
-			<c:if test="${LoggetUser != null}" > 
 				<div class="product">
-					<img alt="" src="img/armor-icon.png"></a>
-					<a href="poroductcategory?type=weapons">Вооружение</a>
+					<a href="poroductcategory?type=weapon"> <img alt="armor" src="img/armor-icon.png">
+						Вооружение
+					</a>
 				</div>
-				</c:if>
 				<div class="product">
-					<img alt="" src="img/armor-icon.png"></a>
-					<a href="/armor">Экипировка <c:out value="${LoggetUser.getName()}"/>	</a>
-					<br>
-									
-
-
+					<a href="poroductcategory?type=armor"> <img alt="armor" src="img/armor-icon.png">
+						Экипировка
+					</a>
+				</div>
+				<div class="product">
+					<a href="poroductcategory?type=other"> <img alt="armor" src="img/armor-icon.png">
+						Полезные вещи
+					</a>
 				</div>
 			</div>
 		</div>

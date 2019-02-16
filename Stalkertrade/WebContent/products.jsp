@@ -27,7 +27,7 @@
 									<tr>
 										<p>Цкна : ${pro.getCost()}</p>
 									</tr>
-									<tr>
+									<tr> 
 										<a class="order" href="addprodtocart?prodid=${pro.getId()}">Купить</a>
 									</tr>
 								</table>
