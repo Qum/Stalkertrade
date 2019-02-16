@@ -14,13 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import qum.model.User;
 
-@WebFilter(urlPatterns = "/manage.do")
+@WebFilter(urlPatterns = "*.dgd")
 public class AdminAuthFilter implements Filter {
-
-    @Override
-    public void destroy() {
-
-    }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse,
@@ -30,13 +25,16 @@ public class AdminAuthFilter implements Filter {
 	if (User != null && User.getAcc_lvl() > 10) {
 	    chain.doFilter(servletRequest, servletResponse);
 	} else {
-	   HttpServletResponse resp = (HttpServletResponse) servletResponse;
-	   resp.sendRedirect("index.jsp");
+	    HttpServletResponse resp = (HttpServletResponse) servletResponse;
+	    resp.sendRedirect("index.jsp");
 	}
     }
 
     @Override
-    public void init(FilterConfig arg0) throws ServletException {
+    public void init(FilterConfig filterConfig) throws ServletException {
     }
 
+    @Override
+    public void destroy() {
+    }
 }

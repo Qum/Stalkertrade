@@ -8,7 +8,7 @@
 				<li><a href="profile.do">Мой профиль</a></li>
 				<li><a href="logout.do">Выход</a></li>
 				<c:if test="${LoggetUser.getAcc_lvl() > 10}">
-					<li><a href="manage.jsp">Admin</a></li>
+					<li><a href="admin">Admin</a></li>
 				</c:if>
 			</c:when>
 			<c:otherwise>

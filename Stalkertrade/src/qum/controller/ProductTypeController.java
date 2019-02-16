@@ -25,13 +25,18 @@ public class ProductTypeController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 	    throws ServletException, IOException {
-	ProductDao pDao = new ProductDao();
-	String requestedType = request.getParameter("type");
-	if (requestedType != null && requestedType != "") {
-	    List<Product> allprod = pDao.getProductByType("weapon");
-	    System.out.println(allprod);
-	    request.setAttribute("products", allprod);
-	    request.getRequestDispatcher("products.jsp").forward(request, response);
+	String requestedProductType = request.getParameter("type");
+	if (requestedProductType != null && requestedProductType != "") {
+	    ProductDao pDao = new ProductDao();
+	    List<Product> allprod = null;
+	    if (requestedProductType.equals("weapon") || requestedProductType.equals("armor")
+		    || requestedProductType.equals("other")) {
+		allprod = pDao.getProductByType(requestedProductType);
+		request.setAttribute("products", allprod);
+		request.getRequestDispatcher("products.jsp").forward(request, response);
+	    }
+	} else {
+	    request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
     }
 

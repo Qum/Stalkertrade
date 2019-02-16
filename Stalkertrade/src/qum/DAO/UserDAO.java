@@ -4,7 +4,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.LinkedList;
+import java.util.List;
 
+import qum.model.Product;
 import qum.model.User;
 
 public class UserDAO {
@@ -15,6 +18,7 @@ public class UserDAO {
     private static final String updateUserSql = "update users set name = ?, pass = ?, email = ?, access_level = ?, coins = ? where id = ?";
     private static final String getUserByEmailSql = "select * from users where email = ?";
     private static final String getUserByNameSql = "select * from users where name = LCASE(?)";
+    private static final String getAllUsersSql = "SELECT * FROM users";
 
     public User getUserById(int id) {
 	ResultSet resultSet = null;
@@ -154,4 +158,38 @@ public class UserDAO {
 	}
 	return user;
     }
+    
+    public List<User> getAllUsers() {
+   	List<User> allUsers = new LinkedList<>();
+   	ResultSet resultSet = null;
+   	User user = null;
+   	try (Connection conn = DbConnFactory.getConnection();
+   		PreparedStatement preparedStatement = conn.prepareStatement(getAllUsersSql)) {
+   	    resultSet = preparedStatement.executeQuery();
+
+   	    while (resultSet.next()) {
+   		user = new User();
+		user.setId(resultSet.getInt("id"));
+		user.setName(resultSet.getString("name"));
+		user.setPassword(resultSet.getString("pass"));
+		user.setEmail(resultSet.getString("email"));
+		user.setAcc_lvl(resultSet.getInt("access_level"));
+		user.setCoins(resultSet.getInt("coins"));
+		allUsers.add(user);
+   	    }
+
+   	} catch (Exception e) {
+   	    e.printStackTrace();
+   	} finally {
+   	    if (resultSet != null) {
+   		try {
+   		    resultSet.close();
+   		} catch (SQLException e) {
+   		    e.printStackTrace();
+   		}
+   	    }
+   	}
+
+   	return allUsers;
+       }
 }
